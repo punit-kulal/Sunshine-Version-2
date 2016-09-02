@@ -149,7 +149,7 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
 
         String desc = data.getString(COL_WEATHER_DESC);
 
-       
+
 
         float degrees = data.getFloat(COL_WEATHER_DEGREES);
 
