@@ -267,6 +267,7 @@ public class FetchWeatherTask extends AsyncTask<String, Void, Void> {
         String format = "json";
         String units = "metric";
         int numDays = 14;
+        final String key = "4e3a19219a4b6d6292d7c68b29e9f024";
 
         try {
             // Construct the URL for the OpenWeatherMap query
@@ -285,7 +286,7 @@ public class FetchWeatherTask extends AsyncTask<String, Void, Void> {
                     .appendQueryParameter(FORMAT_PARAM, format)
                     .appendQueryParameter(UNITS_PARAM, units)
                     .appendQueryParameter(DAYS_PARAM, Integer.toString(numDays))
-                    .appendQueryParameter(APPID_PARAM, BuildConfig.OPEN_WEATHER_MAP_API_KEY)
+                    .appendQueryParameter(APPID_PARAM, key)
                     .build();
 
             URL url = new URL(builtUri.toString());
