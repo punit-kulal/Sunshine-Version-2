@@ -16,7 +16,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.android.sunshine.app.data.WeatherContract;
@@ -44,7 +43,7 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
 
     private static final int DETAIL_LOADER = 0;
 
-    private static final String[] FORECAST_COLUMNS = {
+    private static final String[] DETAIL_COLUMNS = {
             WeatherContract.WeatherEntry.TABLE_NAME + "." + WeatherContract.WeatherEntry._ID,
             WeatherContract.WeatherEntry.COLUMN_DATE,
             WeatherContract.WeatherEntry.COLUMN_SHORT_DESC,
@@ -111,7 +110,7 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
     }
 
     @Override
-    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+    public Loader onCreateLoader(int id, Bundle args) {
         Log.v(LOG_TAG, "In onCreateLoader");
         Intent intent = getActivity().getIntent();
         if (intent == null || intent.getData() == null) {
@@ -123,7 +122,7 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
         return new CursorLoader(
                 getActivity(),
                 intent.getData(),
-                FORECAST_COLUMNS,
+                DETAIL_COLUMNS,
                 null,
                 null,
                 null
@@ -173,8 +172,8 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
         TextView min_tempview = (TextView)getView().findViewById(R.id.minTemp);
         min_tempview.setText(low);
 
-        ImageView custom = (ImageView)getView().findViewById(R.id.custom_icon);
-        custom.setImageResource(Utility.getArtResourceForWeatherCondition(data.getInt(COL_ICON)));
+      //  ImageView custom = (ImageView)getView().findViewById(R.id.custom_icon);
+      //  custom.setImageResource(Utility.getArtResourceForWeatherCondition(data.getInt(COL_ICON)));
 
         TextView humidity_view = (TextView)getView().findViewById(R.id.humidity);
         humidity_view.setText(String.format(getActivity().getString(R.string.format_humidity),
