@@ -53,7 +53,8 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
             WeatherContract.WeatherEntry.COLUMN_HUMIDITY,
             WeatherContract.WeatherEntry.COLUMN_WIND_SPEED,
             WeatherContract.WeatherEntry.COLUMN_PRESSURE,
-            WeatherContract.WeatherEntry.COLUMN_DEGREES
+            WeatherContract.WeatherEntry.COLUMN_DEGREES,
+            WeatherContract.WeatherEntry.COLUMN_WEATHER_ID
     };
 
     // these constants correspond to the projection defined above, and must change if the
@@ -67,7 +68,7 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
     private static final int COL_WEATHER_WIND_SPEED = 6;
     private static final int COL_WEATHER_PRESSURE = 7;
     private static final int COL_WEATHER_DEGREES = 8;
-
+    private static final int COL_ICON = 9;
     public DetailFragment() {
         setHasOptionsMenu(true);
     }
@@ -113,7 +114,7 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
     public Loader<Cursor> onCreateLoader(int id, Bundle args) {
         Log.v(LOG_TAG, "In onCreateLoader");
         Intent intent = getActivity().getIntent();
-        if (intent == null) {
+        if (intent == null || intent.getData() == null) {
             return null;
         }
 
@@ -173,7 +174,7 @@ public class DetailFragment extends Fragment implements LoaderManager.LoaderCall
         min_tempview.setText(low);
 
         ImageView custom = (ImageView)getView().findViewById(R.id.custom_icon);
-        custom.setImageResource(Utility.getArtResourceForWeatherCondition(data.getInt(COL_WEATHER_ID)));
+        custom.setImageResource(Utility.getArtResourceForWeatherCondition(data.getInt(COL_ICON)));
 
         TextView humidity_view = (TextView)getView().findViewById(R.id.humidity);
         humidity_view.setText(String.format(getActivity().getString(R.string.format_humidity),

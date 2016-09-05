@@ -1,5 +1,6 @@
 package com.example.android.sunshine.app;
 
+
 import android.content.Context;
 import android.database.Cursor;
 import android.support.v4.widget.CursorAdapter;
@@ -58,12 +59,12 @@ public class ForecastAdapter extends CursorAdapter {
         if(getItemViewType(cursor.getPosition()) == VIEW_TYPE_TODAY)
         {
             list.iconView.setImageResource(Utility.getArtResourceForWeatherCondition
-                    (cursor.getInt(ForecastFragment.COL_WEATHER_ID)));
+                    (cursor.getInt(ForecastFragment.COL_WEATHER_CONDITION_ID)));
         }
         else
         {
             list.iconView.setImageResource(Utility.getIconResourceForWeatherCondition
-                    (cursor.getInt(ForecastFragment.COL_WEATHER_ID)));
+                    (cursor.getInt(ForecastFragment.COL_WEATHER_CONDITION_ID)));
         }
         // Read date from cursor
         long dateInMillis = cursor.getLong(ForecastFragment.COL_WEATHER_DATE);

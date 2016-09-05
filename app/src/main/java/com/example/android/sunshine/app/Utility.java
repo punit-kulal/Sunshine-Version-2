@@ -15,10 +15,12 @@
  */
 package com.example.android.sunshine.app;
 
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.text.format.Time;
+import android.util.Log;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -116,8 +118,10 @@ public class Utility {
         if (julianDay == currentJulianDay) {
             return context.getString(R.string.today);
         } else if ( julianDay == currentJulianDay +1 ) {
-            return context.getString(R.string.tomorrow);
-        } else {
+            Log.v("CHECK","I reach before tomorrow string");
+            return "Tomorrow";
+        }
+        else {
             Time time = new Time();
             time.setToNow();
             // Otherwise, the format is just the day of the week (e.g "Wednesday".
