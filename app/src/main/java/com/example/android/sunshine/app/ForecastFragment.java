@@ -181,9 +181,10 @@ public class ForecastFragment extends Fragment implements LoaderManager.LoaderCa
     }
 
     private void updateWeather() {
-        Intent i = new Intent(getActivity(),SunshineService.class);
-        i.putExtra(SunshineService.LOCATION_QUERY_EXTRA,Utility.getPreferredLocation(getActivity()));
-        getActivity().startService(i);
+        Intent intent = new Intent(getActivity(), SunshineService.class);
+        intent.putExtra(SunshineService.LOCATION_QUERY_EXTRA,
+                Utility.getPreferredLocation(getActivity()));
+        getActivity().startService(intent);
     }
 
     @Override
